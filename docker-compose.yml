@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+    my-app-angular:
+        image: my-app-angular
+        build: .
+        ports:
+        - 8081:80

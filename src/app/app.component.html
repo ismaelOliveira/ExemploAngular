@@ -1,0 +1,59 @@
+<form  [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-sm-6" >
+      <label for="inputEmail4">Email</label>
+      <input type="text" class="form-control" [ngClass]="aplicaCssErro('email')" id="email"   formControlName="email"  placeholder="Email">
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('email')"  msgErro="Nome é obrigatório.">  </app-campo-control-erro>
+    </div>
+    
+
+    <div class="form-group col-sm-6">
+      <label for="nome">Nome</label>
+      <input type="text"  class="form-control" [ngClass]="aplicaCssErro('nome')" id="nome" formControlName="nome" placeholder="Password">
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('nome')"  msgErro="Nome é obrigatório.">  </app-campo-control-erro>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label for="estado">Estados</label>
+      <select id="estado" class="custom-select" [ngClass]="aplicaCssErro('estado')" formControlName="estado">
+        <option value="">Selecone</option>
+        <option value="1">PE</option>
+        <option value="2">AL</option>
+      </select>
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('estado')"  msgErro="Nome é obrigatório.">  </app-campo-control-erro>
+    </div>
+    <div class="form-group col-sm-6 ">
+      <label for="estado">Carros</label>
+      <ng-select [items]="listaCarros" 
+           bindLabel="name" 
+           bindValue="id" 
+           [(ngModel)]="selectedCar"
+           formControlName="carros"
+           class="custom"
+           [ngClass]="aplicaCssErro('carros')"
+          >
+      </ng-select>
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('carros')"  msgErro="Nome é obrigatório.">  </app-campo-control-erro>
+    </div>
+    <div class="form-group col-sm-6 ">
+      <label for="estado">Carros</label>
+      <ng-select [items]="[]"
+      [addTag]="true"
+      [multiple]="true"
+      [selectOnTab]="true"
+      [isOpen]="false"
+      [email]="true"
+      
+      formControlName="emails">
+      
+    </ng-select>
+  </div>
+  </div>
+  
+
+
+  
+  <button type="submit" class="btn btn-primary">Sign in</button>
+  <app-form-debug [form]="formulario"></app-form-debug>
+</form>
